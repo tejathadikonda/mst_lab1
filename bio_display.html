@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display Bio Data</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .container {
+            width: 50%;
+            margin: auto;
+            overflow: hidden;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 50px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        #displayContent {
+            margin-top: 20px;
+        }
+
+        p {
+            margin: 10px 0;
+        }
+
+        strong {
+            color: #4caf50;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Display Bio Data</h2>
+    <div id="displayContent"></div>
+</div>
+
+<script>
+    // Retrieve form data from localStorage
+    var formDataString = localStorage.getItem('bioData');
+    var displayContent = document.getElementById('displayContent');
+
+    if (formDataString) {
+        var formData = JSON.parse(formDataString);
+
+        // Display form data on the page
+        displayContent.innerHTML = '<br/>';
+        for (var key in formData) {
+            displayContent.innerHTML += '<p><strong>' + key + ':</strong> ' + formData[key] + '</p>';
+        }
+    } else {
+        displayContent.innerHTML = '<p>No bio data available.</p>';
+    }
+</script>
+</body>
+</html>

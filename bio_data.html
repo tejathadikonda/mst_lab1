@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bio Data Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .container {
+            width: 50%;
+            margin: auto;
+            overflow: hidden;
+            padding: 10px;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        form {
+            max-width: 600px;
+            margin: auto;
+        }
+
+        label {
+            display: block;
+            margin: 15px 0 5px;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+        
+        button {
+            background-color: #4caf50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        button:hover {
+            opacity: 0.8;
+        }
+
+        /* Winter button css */
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Bio Data Form</h2>
+    <form action="#" method="post" id="bioForm" onsubmit="showFormData(event)">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="Name" required>
+
+        <label for="dob">Date of Birth:</label>
+        <input type="date" id="dob" name="Dob" required>
+
+        <label for="fatherName">Father's Name:</label>
+        <input type="text" id="fatherName" name="FatherName" required>
+
+        <label for="motherName">Mother's Name:</label>
+        <input type="text" id="motherName" name="MotherName" required>
+
+        <label for="gender">Gender:</label>
+        <select id="gender" name="Gender" required>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+        </select>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="Email" required>
+
+        <label for="mobile">Mobile Number:</label>
+        <input type="tel" id="mobile" name="Mobile" pattern="[0-9]{10}" required>
+
+        <label for="address">Address:</label>
+        <textarea id="address" name="Address" rows="4" required></textarea>
+
+        <button type="submit">Submit</button>
+    </form>
+</div>
+
+</body>
+
+<script>
+    function showFormData(event) {
+        event.preventDefault();
+
+        var formData = {
+            name: document.getElementById('name').value,
+            dob: document.getElementById('dob').value,
+            fatherName: document.getElementById('fatherName').value,    
+            motherName: document.getElementById('motherName').value,
+            gender: document.getElementById('gender').value,
+            email: document.getElementById('email').value,
+            mobile: document.getElementById('mobile').value,
+            address: document.getElementById('address').value
+        };
+
+        // Store form data in localStorage
+        localStorage.setItem('bioData', JSON.stringify(formData));
+
+        // Redirect to bio_display.html
+        window.location.href = "bio_display.html";
+    }
+</script>
+</html>
